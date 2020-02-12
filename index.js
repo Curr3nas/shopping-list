@@ -10,7 +10,7 @@ function listEdit() {
 
     $('ul').append(`
     <li>
-      <span class="shopping-item">${userItem}</span>
+      <span class="shopping-item">${userItem.val()}</span>
       <div class="shopping-item-controls">
         <button class="shopping-item-toggle">
           <span class="button-label">check</span>
