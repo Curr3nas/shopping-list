@@ -2,12 +2,9 @@
 'use strict';
 
 function listEdit() {
-  $('#js-shopping-list-form').submit(event => {
-
+  $('#js-shopping-list-form').submit(function(event) {
     event.preventDefault();
-
-    const userItem = $(event.currentTarget).find('#shopping-list-entry');
-
+    const userItem = $(this).find('#shopping-list-entry');
     $('ul').append(`
     <li>
       <span class="shopping-item">${userItem.val()}</span>
@@ -21,6 +18,15 @@ function listEdit() {
       </div>
     </li>
     `);
+    userItem.val('');
+  });
+
+  $('.shopping-list').on('click', '.shopping-item-toggle', event => {
+    $(event.currentTarget).closest('.shopping-item-controls').siblings('.shopping-item').toggleClass('shopping-item__checked');
+  });
+
+  $('.shopping-list').on('click', '.shopping-item-delete', event => {
+    $(event.currentTarget).closest('li').remove('li');
   });
 }
 
